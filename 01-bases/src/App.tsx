@@ -1,6 +1,7 @@
 import { Counter } from "./bases/Counter"
 import { CounterBy } from "./bases/CounterBy";
 import { CounterEffect } from "./bases/CounterEffect";
+import { Counterhook } from "./bases/CounterHook";
 
 type CounterProps = {
   initialValue: number;
@@ -18,7 +19,8 @@ function App() {
         prevValue={0}
       /> */}
       {/* <CounterBy/> */}
-      <CounterEffect/>
+      {/* <CounterEffect/> */}
+      <Counterhook/>
     </div>
   )
 }
