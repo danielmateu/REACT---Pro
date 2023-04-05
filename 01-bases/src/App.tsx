@@ -13,11 +13,11 @@ function App() {
     <div className="App">
       <h1>Hello World</h1>
       <hr />
-      <Counter
+      {/* <Counter
         initialValue={15}
         prevValue={0}
-      />
-      <CounterBy/>
+      /> */}
+      {/* <CounterBy/> */}
       <CounterEffect/>
     </div>
   )

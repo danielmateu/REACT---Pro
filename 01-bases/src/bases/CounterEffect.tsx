@@ -1,3 +1,4 @@
+import { gsap } from "gsap";
 import { useEffect, useState } from "react";
 
 
@@ -12,6 +13,9 @@ export const CounterEffect = () => {
         if(counter < 10) return
         
         console.log('%cSe llegó a 10', 'color: green; background-color: black; font-size: 20px; font-weight: bold;');
+        gsap.to('h2', { duration: 1, color: 'red', y: -10,ease: 'ease.out'  }).then(() => {
+            gsap.to('h2', { duration: 1, y: 0, ease: 'bounce.out' });
+        });
     }, [counter])
     
 
@@ -23,7 +27,8 @@ export const CounterEffect = () => {
 
     return (
         <>
-            <h1>Counter Effect: {counter}</h1>
+            <h1>Counter Effect:</h1>
+            <h2>{counter}</h2>
 
             <button onClick={handleCLick}>+1</button>
         </>
