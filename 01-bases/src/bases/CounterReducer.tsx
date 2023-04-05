@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 
+
 interface CounterState {
     counter: number;
     previous: number;
@@ -7,34 +8,36 @@ interface CounterState {
 }
 
 const INITIAL_STATE: CounterState = {
-    counter: 10,
+    counter: 0,
     previous: 0,
     changes: 0
 };
 
 type CounterAction =
-    | { type: 'increment', payload: { value: number } }
-    | { type: 'decrement' }
-    | { type: 'reset' };
+    | { type: 'increaseBy', payload: { value: number } }
+    // | { type: 'decrement' }
+    | { type: 'handleReset' };
 
 const counterReducer = (state: CounterState, action: CounterAction): CounterState => {
 
+    const { counter, previous, changes } = state;
+
     switch (action.type) {
-        case 'increment':
+        case 'increaseBy':
             return {
                 ...state,
-                counter: state.counter + 1,
-                changes: state.changes + 1,
-                previous: state.counter
+                counter: counter + action.payload.value,
+                changes: changes + 1,
+                previous: counter
             }
-        case 'decrement':
-            return {
-                ...state,
-                counter: state.counter - 1,
-                changes: state.changes + 1,
-                previous: state.counter
-            }
-        case 'reset':
+        // case 'decrement':
+        //     return {
+        //         ...state,
+        //         counter: state.counter - 1,
+        //         changes: state.changes + 1,
+        //         previous: state.counter
+        //     }
+        case 'handleReset':
             return {
                 ...state,
                 counter: 0,
@@ -48,19 +51,27 @@ const counterReducer = (state: CounterState, action: CounterAction): CounterStat
 
 export const CounterReducerComponent = () => {
 
-    const [{ counter }, dispatch] = useReducer(counterReducer, INITIAL_STATE)
+    const [counterState, dispatch] = useReducer(counterReducer, INITIAL_STATE)
 
-    const handleClick = () => {
-        dispatch({ type: 'reset' })
+    const handleReset = () => {
+        dispatch({ type: 'handleReset' })
+    }
+
+    const increaseBy = (value: number) => {
+        dispatch({ type: 'increaseBy', payload: { value } })
     }
 
     return (
         <>
-            <h1>Counter Reducer: {counter}</h1>
+            <h1>Counter Reducer {counterState.counter}</h1>
+            <pre>
+                {JSON.stringify(counterState, null, 2)}
+            </pre>
 
-            <button
-                onClick={handleClick}
-            >Reset</button>
+            <button onClick={() => increaseBy(1)}>+1</button>
+            <button onClick={() => increaseBy(5)}>+5</button>
+            <button onClick={() => increaseBy(10)}>+10</button>
+            <button onClick={handleReset}> Reset</button>
         </>
     )
 }
