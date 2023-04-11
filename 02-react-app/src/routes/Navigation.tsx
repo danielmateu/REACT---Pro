@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
-import { Routes, Route, Link, NavLink, Navigate } from "react-router-dom";
+import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import logo from "../assets/react.svg";
-import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
+import { routes } from "./routes";
 
 
 export const Navigation = () => {
@@ -11,33 +11,35 @@ export const Navigation = () => {
                 <nav>
                     <img src={logo} alt="React Logo" />
                     <ul>
-                        <li>
-                            <NavLink
-                                to="/lazy1"
-                                className={({ isActive }) => isActive ? 'nav-active' : ''}
-                            >Home</NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/lazy2"
-                                className={({ isActive }) => isActive ? 'nav-active' : ''}
-                            >About</NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/lazy3"
-                                className={({ isActive }) => isActive ? 'nav-active' : ''}
-                            >Users</NavLink>
-                        </li>
+                        {/* Crear NavLink dinamicos */}
+                        {
+                            routes.map(({ to, name }) => (
+                                <li key={to}>
+                                    <NavLink
+                                        to={name}
+                                        className={({ isActive }) => isActive ? 'nav-active' : ''}
+                                    >{name}</NavLink>
+                                </li>
+                            )
+                            )
+                        }
                     </ul>
                 </nav>
 
                 <Routes>
-                    <Route path="lazy1" element={<Lazypage1 />} />
-                    <Route path="lazy2" element={<Lazypage2 />} />
-                    <Route path="lazy3" element={<Lazypage3 />} />
+                    {/* Crear Routes dinamicos */}
+                    {
+                        routes.map(({ to, path, Component }) => (
+                            <Route
+                                key={to}
+                                path={path}
+                                element={<Component />}
+                            />
+                        )
+                        )
+                    }
 
-                    <Route path="/*" element={<Navigate to="/lazy1" replace={true} />} />
+                    <Route path="/*" element={<Navigate to={routes[0].to} replace />} />
                 </Routes>
             </div>
 
