@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Link, NavLink, Navigate } from "react-router-dom";
 import logo from "../assets/react.svg";
+import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
 
 
 export const Navigation = () => {
@@ -12,19 +13,19 @@ export const Navigation = () => {
                     <ul>
                         <li>
                             <NavLink
-                                to="lazy1"
+                                to="/lazy1"
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >Home</NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="lazy2"
+                                to="/lazy2"
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >About</NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="lazy3"
+                                to="/lazy3"
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >Users</NavLink>
                         </li>
@@ -32,11 +33,11 @@ export const Navigation = () => {
                 </nav>
 
                 <Routes>
-                    <Route path="lazy1" element={<h1>About Page</h1>} />
-                    <Route path="lazy2" element={<h1>Users Page</h1>} />
-                    <Route path="lazy3" element={<h1>Home Page</h1>} />
+                    <Route path="lazy1" element={<Lazypage1 />} />
+                    <Route path="lazy2" element={<Lazypage2 />} />
+                    <Route path="lazy3" element={<Lazypage3 />} />
 
-                    <Route path="*" element={<Navigate to="/lazy1" replace={true} />} />
+                    <Route path="/*" element={<Navigate to="/lazy1" replace={true} />} />
                 </Routes>
             </div>
 
