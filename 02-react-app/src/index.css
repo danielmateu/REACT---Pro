@@ -52,3 +52,10 @@ nav li a {
   color: grey;
   transition: all .3s ease-out;
 }
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

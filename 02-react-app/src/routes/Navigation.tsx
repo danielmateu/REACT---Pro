@@ -1,48 +1,57 @@
+import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
-import logo from "../assets/react.svg";
 import { routes } from "./routes";
-
+import logo from "../assets/react.svg";
 
 export const Navigation = () => {
     return (
-        <BrowserRouter>
-            <div className="main-layout">
-                <nav>
+        <Suspense
+            fallback={
+                <span className="loading">
                     <img src={logo} alt="React Logo" />
-                    <ul>
-                        {/* Crear NavLink dinamicos */}
+                    <h1>Loading...</h1>
+                </span>
+            }
+        >
+            <BrowserRouter>
+                <div className="main-layout">
+                    <nav>
+                        <img src={logo} alt="React Logo" />
+                        <ul>
+                            {/* Crear NavLink dinamicos */}
+                            {
+                                routes.map(({ to, name }) => (
+                                    <li key={to}>
+                                        <NavLink
+                                            to={name}
+                                            className={({ isActive }) => isActive ? 'nav-active' : ''}
+                                        >{name}</NavLink>
+                                    </li>
+                                )
+                                )
+                            }
+                        </ul>
+                    </nav>
+
+                    <Routes>
+                        {/* Crear Routes dinamicos */}
                         {
-                            routes.map(({ to, name }) => (
-                                <li key={to}>
-                                    <NavLink
-                                        to={name}
-                                        className={({ isActive }) => isActive ? 'nav-active' : ''}
-                                    >{name}</NavLink>
-                                </li>
+                            routes.map(({ to, path, Component }) => (
+                                <Route
+                                    key={to}
+                                    path={path}
+                                    element={<Component />}
+                                />
                             )
                             )
                         }
-                    </ul>
-                </nav>
 
-                <Routes>
-                    {/* Crear Routes dinamicos */}
-                    {
-                        routes.map(({ to, path, Component }) => (
-                            <Route
-                                key={to}
-                                path={path}
-                                element={<Component />}
-                            />
-                        )
-                        )
-                    }
+                        <Route path="/*" element={<Navigate to={routes[0].to} replace />} />
+                    </Routes>
+                </div>
 
-                    <Route path="/*" element={<Navigate to={routes[0].to} replace />} />
-                </Routes>
-            </div>
-
-        </BrowserRouter>
+            </BrowserRouter>
+        </Suspense>
     )
 }
