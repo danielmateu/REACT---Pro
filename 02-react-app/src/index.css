@@ -21,6 +21,7 @@ code {
 }
 
 nav {
+  padding-top: 2em;
   background-color: #363a45;
   height: 100vh;
   margin-right: 15px;

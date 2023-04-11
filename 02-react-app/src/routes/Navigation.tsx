@@ -12,19 +12,19 @@ export const Navigation = () => {
                     <ul>
                         <li>
                             <NavLink
-                                to="/"
+                                to="lazy1"
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >Home</NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="/about"
+                                to="lazy2"
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >About</NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="/users"
+                                to="lazy3"
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >Users</NavLink>
                         </li>
@@ -32,11 +32,11 @@ export const Navigation = () => {
                 </nav>
 
                 <Routes>
-                    <Route path="/about" element={<h1>About Page</h1>} />
-                    <Route path="/users" element={<h1>Users Page</h1>} />
-                    <Route path="/" element={<h1>Home Page</h1>} />
+                    <Route path="lazy1" element={<h1>About Page</h1>} />
+                    <Route path="lazy2" element={<h1>Users Page</h1>} />
+                    <Route path="lazy3" element={<h1>Home Page</h1>} />
 
-                    <Route path="*" element={<Navigate to="/" replace={true} />} />
+                    <Route path="*" element={<Navigate to="/lazy1" replace={true} />} />
                 </Routes>
             </div>
 
