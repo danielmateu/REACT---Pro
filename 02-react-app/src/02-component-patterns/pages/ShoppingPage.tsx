@@ -1,13 +1,15 @@
 
 import { products } from "../data/products";
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components"
-import { useShoppingCart } from "../hooks/useShoppingCart";
+// import { useShoppingCart } from "../hooks/useShoppingCart";
+
+const product = products[0]
 
 import '../styles/custom-styless.css'
 
 const ShoppingPage = () => {
 
-    const { shoppingCard, onProductCountChange } = useShoppingCart()
+    // const { shoppingCard, onProductCountChange } = useShoppingCart()
 
     return (
         <main>
@@ -18,26 +20,30 @@ const ShoppingPage = () => {
                 flexWrap: 'wrap',
             }}
             >
-                {
-                    products.map(product => (
-                        <ProductCard
-                            key={product.id}
-                            product={product}
-                            className='bg-dark text-white'
-                            value={shoppingCard[product.id]?.count || 0}
-                            onChange={onProductCountChange}
-                        >
-                            <ProductImage className='custom-image' />
-                            <ProductTitle className='text-white text-bold' />
-                            <ProductButtons
-                                className='custom-buttons'
-                            />
-                        </ProductCard>
-                    ))
-                }
+                <ProductCard
+                    key={product.id}
+                    product={product}
+                    className='bg-dark text-white'
+                    initialValues={{
+                        count: 4,
+                        maxCount: 10,
+                        
+                    }}
+                >
+                    <ProductImage className='custom-image' />
+                    <ProductTitle className='text-white text-bold' />
+                    <ProductButtons
+                        className='custom-buttons'
+                    />
+                </ProductCard>
 
             </div>
-            <div className="shopping-card">
+            {/* <div
+                className="shopping-card"
+                style={{
+                    padding: '1em',
+                }}
+            >
                 {
                     Object.keys(shoppingCard).length === 0 ? <div>ShoppingCard is empty</div> : <div>ShoppingCard</div>
                 }
@@ -66,7 +72,7 @@ const ShoppingPage = () => {
                         </ProductCard>
                     ))
                 }
-            </div>
+            </div> */}
 
             {/* <div>
                 <code>
