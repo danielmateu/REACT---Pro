@@ -12,6 +12,8 @@ export const ProductButtons = ({ className, style }: Props) => {
 
     const { counter, handleAdd } = useContext(ProductContext)
 
+    
+
     return (
         <div
             style={style}
