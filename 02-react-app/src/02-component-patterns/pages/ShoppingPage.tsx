@@ -1,5 +1,5 @@
 import { ProductButtons, ProductCard, ProductImage, ProductTitle } from "../components"
-
+import '../styles/custom-styless.css'
 
 
 const product = {
@@ -19,12 +19,12 @@ const ShoppingPage = () => {
                 flexWrap: 'wrap',
             }}
             >
-                <ProductCard product={product} >
-                    <ProductImage />
-                    <ProductTitle />
-                    <ProductButtons />
+                <ProductCard product={product} className='bg-dark text-white' >
+                    <ProductImage className='custom-image'/>
+                    <ProductTitle className='text-white text-bold' />
+                    <ProductButtons className='custom-buttons'/>
                 </ProductCard>
-                
+
                 <ProductCard product={product} >
                     <ProductCard.Image />
                     <ProductCard.Title title={'Café'} />
