@@ -11,36 +11,23 @@ export const useShoppingCart = () => {
     })
 
     const onProductCountChange = ({ count, product }: { count: number, product: Product }) => {
-        // console.log('onProductCountChange', count, product)
+        console.log('onProductCountChange', count, product)
         setShoppingCard(oldShoppingCard => {
+            // Borrar el producto del carrito
 
-            const productInCart: ProductInCart = oldShoppingCard[product.id] || { ...product, count: 0 }
-
-            if (Math.max(productInCart.count + count, 0) > 0) {
-                productInCart.count += count;
-                return {
-                    ...oldShoppingCard,
-                    [product.id]: productInCart
-                }
+            if (count === 0) {
+                const newShoppingCard = { ...oldShoppingCard }
+                delete newShoppingCard[product.id]
+                return newShoppingCard
             }
 
-            // Borrar el producto del carrito
-            const { [product.id]: toDelete, ...rest } = oldShoppingCard
-            return rest
-
-            // if (count === 0) {
-            //     const newShoppingCard = { ...oldShoppingCard }
-            //     delete newShoppingCard[product.id]
-            //     return newShoppingCard
-            // }
-
-            // return {
-            //     ...oldShoppingCard,
-            //     [product.id]: {
-            //         ...product,
-            //         count
-            //     }
-            // }
+            return {
+                ...oldShoppingCard,
+                [product.id]: {
+                    ...product,
+                    count
+                }
+            }
         })
     }
 
