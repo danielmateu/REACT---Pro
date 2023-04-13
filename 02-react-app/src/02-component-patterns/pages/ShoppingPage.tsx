@@ -41,7 +41,7 @@ const ShoppingPage = () => {
                     style={{
                         backgroundColor: '#70D1F8',
                         // color: '#944242',
-                        // textAlign: 'center',
+                        // textAlign: 'center'
                     }}
                 >
                     <ProductCard.Image 
