@@ -1,5 +1,5 @@
-.bg-dark{
-    background-color: rgb(56,56,56);
+.bg-dark {
+    background-color: rgb(56, 56, 56);
 }
 
 .text-white {
@@ -20,7 +20,8 @@
     -o-border-radius: 2em;
 }
 
-.custom-buttons button, .custom-buttons div{
+.custom-buttons button,
+.custom-buttons div {
     /* background-color: rgb(194, 46, 46); */
     color: white;
     border-color: white;
@@ -30,4 +31,14 @@
     position: fixed;
     top: 0;
     right: 10px;
+}
+
+.reset-btn {
+    color: rgb(65, 65, 65);
+    padding: 0.5em;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
