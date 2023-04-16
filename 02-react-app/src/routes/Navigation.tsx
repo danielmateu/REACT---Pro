@@ -1,10 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Link, NavLink, Navigate } from "react-router-dom";
 import logo from "../assets/react.svg";
-import { Lazypage1 } from "../01-lazyload/pages/LazyPage1";
-import { Lazypage2 } from "../01-lazyload/pages/LazyPage2";
-import { Lazypage3 } from "../01-lazyload/pages/LazyPage3";
-// import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
+import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
+import RegisterPage from "../03-forms/pages/RegisterPage";
 
 
 
@@ -33,6 +31,12 @@ export const Navigation = () => {
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >Users</NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/register"
+                                className={({ isActive }) => isActive ? 'nav-active' : ''}
+                            >Register Page</NavLink>
+                        </li>
                     </ul>
                 </nav>
 
@@ -40,6 +44,7 @@ export const Navigation = () => {
                     <Route path="lazy1" element={<Lazypage1 />} />
                     <Route path="lazy2" element={<Lazypage2 />} />
                     <Route path="lazy3" element={<Lazypage3 />} />
+                    <Route path="register" element={<RegisterPage />} />
 
                     <Route path="/*" element={<Navigate to="/lazy1" replace={true} />} />
                 </Routes>
