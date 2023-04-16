@@ -1,7 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, Link, NavLink, Navigate } from "react-router-dom";
 import logo from "../assets/react.svg";
-import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
+import { Lazypage1 } from "../01-lazyload/pages/LazyPage1";
+import { Lazypage2 } from "../01-lazyload/pages/LazyPage2";
+import { Lazypage3 } from "../01-lazyload/pages/LazyPage3";
+// import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
+
 
 
 export const Navigation = () => {
