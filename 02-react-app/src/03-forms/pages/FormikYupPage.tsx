@@ -6,7 +6,7 @@ import '../styles/styles.css'
 
 export const FormikYupPage = () => {
 
-    const { handleChange, values, handleSubmit, errors, touched, handleBlur } = useFormik({
+    const { handleSubmit, errors, touched, getFieldProps } = useFormik({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -15,7 +15,6 @@ export const FormikYupPage = () => {
         onSubmit: (values) => {
             console.log(values)
         },
-        // validate
         validationSchema: Yup.object({
             firstName: Yup.string()
                 .required('Este campo es requerido')
@@ -43,11 +42,8 @@ export const FormikYupPage = () => {
                 <input
                     type="text"
                     id="firstName"
-                    name="firstName"
                     placeholder="First Name"
-                    onChange={handleChange}
-                    value={values.firstName}
-                    onBlur={handleBlur}
+                    {...getFieldProps('firstName')}
                 />
                 {
                     touched.firstName && errors.firstName && <span>{errors.firstName}</span>
@@ -57,11 +53,8 @@ export const FormikYupPage = () => {
                 <input
                     type="text"
                     id="lastName"
-                    name="lastName"
                     placeholder="Last Name"
-                    onChange={handleChange}
-                    value={values.lastName}
-                    onBlur={handleBlur}
+                    {...getFieldProps('lastName')}
                 />
 
                 {
@@ -72,11 +65,8 @@ export const FormikYupPage = () => {
                 <input
                     type="email"
                     id="email"
-                    name="email"
                     placeholder="Email"
-                    onChange={handleChange}
-                    value={values.email}
-                    onBlur={handleBlur}
+                    {...getFieldProps('email')}
                 />
 
                 {
