@@ -3,6 +3,7 @@ import { Lazypage1, Lazypage2, Lazypage3 } from "../01-lazyload/pages";
 import { FormikBasicPage, RegisterPage } from "../03-forms/pages";
 
 import logo from "../assets/react.svg";
+import { FormikYupPage } from "../03-forms/pages/FormikYupPage";
 
 
 
@@ -43,6 +44,12 @@ export const Navigation = () => {
                                 className={({ isActive }) => isActive ? 'nav-active' : ''}
                             >Formik Basic Page</NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/formik-yup"
+                                className={({ isActive }) => isActive ? 'nav-active' : ''}
+                            >Formik Yup Page</NavLink>
+                        </li>
                     </ul>
                 </nav>
 
@@ -52,6 +59,7 @@ export const Navigation = () => {
                     <Route path="lazy3" element={<Lazypage3 />} />
                     <Route path="register" element={<RegisterPage />} />
                     <Route path="formik-basic" element={<FormikBasicPage />} />
+                    <Route path="formik-yup" element={<FormikYupPage />} />
 
                     <Route path="/*" element={<Navigate to="/lazy1" replace={true} />} />
                 </Routes>

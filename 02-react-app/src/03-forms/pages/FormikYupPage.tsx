@@ -1,38 +1,10 @@
 
-import { useFormik, FormikErrors } from 'formik'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
 import '../styles/styles.css'
 
-interface FormValues {
-    firstName: string
-    lastName: string
-    email: string
-}
-
-export const FormikBasicPage = () => {
-
-    const validate = ({ firstName, email, lastName }: FormValues) => {
-        const errors: FormikErrors<FormValues> = {}
-
-        if (!firstName) {
-            errors.firstName = 'Este campo es necesario'
-        } else if (firstName.length >= 15 || firstName.length <= 3) {
-            errors.firstName = 'Debe ser menor a 15 caracteres y mayor a 3'
-        }
-
-        if (!lastName) {
-            errors.lastName = 'Este campo es necesario'
-        } else if (lastName.length >= 20 || lastName.length <= 3) {
-            errors.lastName = 'Debe ser menor a 20 caracteres y mayor a 3'
-        }
-
-        if (!email) {
-            errors.email = 'Este campo es necesario'
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
-            errors.email = 'Debe ser un email válido'
-        }
-
-        return errors;
-    }
+export const FormikYupPage = () => {
 
     const { handleChange, values, handleSubmit, errors, touched, handleBlur } = useFormik({
         initialValues: {
@@ -43,12 +15,25 @@ export const FormikBasicPage = () => {
         onSubmit: (values) => {
             console.log(values)
         },
-        validate
+        // validate
+        validationSchema: Yup.object({
+            firstName: Yup.string()
+                .required('Este campo es requerido')
+                .min(3, 'Debe ser mayor a 3 caracteres')
+                .max(15, 'Debe ser menor a 15 caracteres'),
+            lastName: Yup.string()
+                .required('Este campo es requerido')
+                .min(3, 'Debe ser mayor a 3 caracteres')
+                .max(20, 'Debe ser menor a 20 caracteres'),
+            email: Yup.string()
+                .required('Este campo es requerido')
+                .email('Debe ser un email válido'),
+        })
     })
 
     return (
         <div>
-            <h1>Formik Basic Page</h1>
+            <h1>Formik Yup Page</h1>
             <hr />
             <form
                 noValidate
