@@ -4,6 +4,97 @@
         "name": "firstName",
         "placeholder": "John",
         "label": "First Name",
-        "value": ""
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "First Name is required"
+            },
+            {
+                "type": "minLength",
+                "value": 3,
+                "message": "First Name must be at least 3 characters"
+            },
+            {
+                "type": "maxLength",
+                "value": 10,
+                "message": "First Name must be less than 10 characters"
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastName",
+        "placeholder": "Doe",
+        "label": "Last Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "Last Name is required"
+            },
+            {
+                "type": "minLength",
+                "value": 3,
+                "message": "Last Name must be at least 3 characters"
+            },
+            {
+                "type": "maxLength",
+                "value": 10,
+                "message": "Last Name must be less than 10 characters"
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "placeholder": "johndoe@mail.com",
+        "label": "Email",
+        "value": "",
+        "validations": [
+            {
+                "type": "required",
+                "message": "Email is required"
+            },
+            {
+                "type": "pattern",
+                "value": "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
+                "message": "Invalid email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "favoriteGame",
+        "label": "favorite Game",
+        "value": "",
+        "options" : [
+            {
+                "id" : 1,
+                "label" : "The Legend of Zelda: Breath of the Wild",
+                "description": "The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo for the Nintendo Switch and Wii U video game consoles. The 19th installment in The Legend of Zelda series, Breath of the Wild is set at the end of the Zelda timeline. The player controls Link, who awakens from a 100-year slumber to a mysterious voice that guides him to defeat Calamity Ganon, a corrupted monster that has seized control of Hyrule. The open-world design allows the player to tackle the game's objectives in any order."
+            },
+            {
+                "id" : 2,
+                "label" : "The Last of Us",
+                "description": "The Last of Us is a post-apocalyptic action-adventure game developed by Naughty Dog and released in 2013 for the PlayStation 3. The game follows the story of Joel, a smuggler in a world devastated by a fungal pandemic that has turned most of humanity into infected monsters, and Ellie, a teenage girl who may hold the key to a cure for the disease. The game is set 20 years after the outbreak, and Joel and Ellie are tasked with traveling across the United States from Boston to Salt Lake City to deliver Ellie to a group of resistance fighters known as the Fireflies, who believe that Ellie's immunity is the key to developing a vaccine."
+            },
+            {
+                "id" : 3,
+                "label" : "Super Mario Odyssey",
+                "description": "Super Mario Odyssey is a 3D platforming game developed and published by Nintendo for the Nintendo Switch console in 2017. The game follows the adventures of Mario and his new companion, Cappy, as they travel across various worlds and kingdoms to save Princess Peach from Bowser's evil plans to marry her. The game features a sandbox-style open-world gameplay, where Mario can explore various locations, collect power moons, and complete missions to progress through the game. Mario also gains the ability to capture and control various objects and creatures with Cappy, allowing him to access new areas and solve puzzles."
+            },
+            {
+                "id" : 4,
+                "label" : "Metroid Prime 4",
+                "description": "Metroid Prime 4 is an upcoming action-adventure game being developed by Retro Studios and published by Nintendo, exclusively for the Nintendo Switch console. It is the fourth installment in the Metroid Prime series, following the events of Metroid Prime 3: Corruption, which was released in 2007 for the Wii console. The game's story and gameplay are still under wraps, and not much is known about it except for a teaser trailer released in 2017. The trailer revealed that the game would feature a new protagonist, but it is unclear whether the protagonist will be a new character or a returning one from previous games in the series."
+            },
+            {
+                "id" : 5,
+                "label" : "Metal Gear Solid",
+                "description": "Metal Gear Solid is a critically acclaimed stealth action video game developed by Konami Computer Entertainment Japan and directed by Hideo Kojima. It was first released in 1998 for the PlayStation console and has since been re-released on multiple platforms. The game follows the story of Solid Snake, a legendary soldier who is sent on a mission to infiltrate a nuclear weapons disposal facility in Alaska, where he must rescue hostages and stop a group of terrorists from launching a nuclear strike. As the game progresses, Snake uncovers a complex web of conspiracies and deceit, involving the mysterious military organization known as Foxhound, and his former mentor, Big Boss. The gameplay of Metal Gear Solid is based on stealth mechanics, where the player must avoid detection by enemy soldiers and surveillance systems, using a combination of hiding, sneaking, and silent takedowns. The game also features action elements, such as gunfights and boss battles, as well as a variety of gadgets and weapons that can be used to aid in infiltration."
+            }
+    ]
     }
+
 ]
