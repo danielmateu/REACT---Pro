@@ -1,18 +1,17 @@
 
-import { Field, Form, ErrorMessage, Formik } from 'formik'
+import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
+
+import { MyCheckbox, MySelect, MyTextInput } from '../components'
 
 import '../styles/styles.css'
 
-export const FormikComponents = () => {
-
-    
+export const FormikAbstractation = () => {
 
     return (
         <div>
-            <h1>Formik Components Page</h1>
+            <h1>Formik Abstractation Page</h1>
             <hr />
-
             <Formik
                 initialValues={{
                     firstName: '',
@@ -47,33 +46,34 @@ export const FormikComponents = () => {
                 {(formik) => {
                     return (
                         <Form>
-                            <label htmlFor="firstName">First Name</label>
-                            <Field name="firstName" type='text' placeholder='John' />
-                            <ErrorMessage name="firstName" component='span' />
+                            <MyTextInput
+                                label='First Name'
+                                name='firstName'
+                                placeholder='John' />
 
-                            <label htmlFor="lastName">Last Name</label>
-                            <Field name="lastName" type='text' placeholder='Doe Smith' />
-                            <ErrorMessage name="lastName" component='span' />
+                            <MyTextInput
+                                label='Last Name'
+                                name='lastName'
+                                placeholder='Doe Smith' />
 
-                            <label htmlFor="email">Email</label>
-                            <Field name="email" type='email' placeholder='johndoe@mail.com' />
-                            <ErrorMessage name="email" component='span' />
+                            <MyTextInput
+                                type='email'
+                                label='Email'
+                                name='email'
+                                placeholder='johndoe@mail.com' />
 
-                            <label htmlFor="jobType">Job Type</label>
-                            <Field name="jobType" as='select'>
+                            <MySelect name="jobType" as='select' label={'Job Type'}>
                                 <option value="">Select a job type</option>
                                 <option value="designer">Designer</option>
                                 <option value="developer">Developer</option>
                                 <option value="product">Product Manager</option>
                                 <option value="other">Other</option>
-                            </Field>
-                            <ErrorMessage name="jobType" component='span' />
+                            </MySelect>
 
-                            <label>
-                                <Field name="terms" type='checkbox' />
-                                Terms & conditions
-                            </label>
-                            <ErrorMessage name="terms" component='span' />
+                            <MyCheckbox
+                                label='Terms & Conditions'
+                                name='terms'
+                            />
 
                             <button type="submit">
                                 Submit
@@ -83,8 +83,6 @@ export const FormikComponents = () => {
                 }
                 }
             </Formik>
-
-
         </div>
     )
 }
