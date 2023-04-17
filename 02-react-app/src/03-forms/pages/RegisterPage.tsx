@@ -2,7 +2,7 @@ import { FormEvent } from 'react'
 import { useForm } from '../hooks/useForm'
 import '../styles/styles.css'
 
-const RegisterPage = () => {
+export const RegisterPage = () => {
 
     const { formData, onChange, resetForm, isValidEmail, name, email, password, repeatPassword } = useForm({
         name: '',
@@ -95,4 +95,4 @@ const RegisterPage = () => {
     )
 }
 
-export default RegisterPage
+// export default RegisterPage
