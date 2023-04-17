@@ -56,13 +56,13 @@ export const FormikBasicPage = () => {
             >
                 <label htmlFor="firstName">First Name</label>
                 <input
-                    type="text"
                     id="firstName"
                     name="firstName"
-                    placeholder="First Name"
-                    onChange={handleChange}
-                    value={values.firstName}
                     onBlur={handleBlur}
+                    onChange={handleChange}
+                    placeholder="First Name"
+                    type="text"
+                    value={values.firstName}
                 />
                 {
                     touched.firstName && errors.firstName && <span>{errors.firstName}</span>
